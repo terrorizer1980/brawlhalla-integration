@@ -5,15 +5,9 @@ from fastapi import FastAPI, Cookie
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
 from aiohttp import client
-from tortoise import Model
 from tortoise.contrib.fastapi import register_tortoise
-from tortoise.fields import BigIntField, IntField
 
-
-class BrawlhallaUser(Model):
-    discord_id = BigIntField(pk=True, generated=False)
-    brawlhalla_id = IntField()
-
+from models import BrawlhallaUser
 
 with open("config.json") as config_file:
     config = json.load(config_file)
@@ -89,7 +83,7 @@ async def finish_link(error: str = None, code: str = None, state: str = None, re
 register_tortoise(
     app,
     db_url=config["db_url"],
-    modules={"models": ["__main__"]},
+    modules={"models": ["models"]},
     generate_schemas=True,
     add_exception_handlers=True,
 )
