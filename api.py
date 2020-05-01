@@ -64,7 +64,7 @@ async def finish_link(error: str = None, code: str = None, state: str = None, re
         found = False
         for connection in connections:
             if connection["type"] == "steam":
-                async with session_pool.get(f"https://api.brawlhalla.com/search?steam_id={connection['id']}&api_key={config['api_key']}") as bresp:
+                async with session_pool.get(f"https://api.brawlhalla.com/search?steamid={connection['id']}&api_key={config['api_key']}") as bresp:
                     info = await bresp.json()
                     if "brawlhalla_id" in info:
                         found = True
