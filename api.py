@@ -70,15 +70,11 @@ async def finish_link(error: str = None, code: str = None, state: str = None, re
                         found = True
                         await BrawlhallaUser.create(discord_id=user_id, brawlhalla_id=info["brawlhalla_id"])
                         break
-
+        await session_pool.close()
         if found:
             return "Your brawlhalla account was successfully linked!"
         else:
             return "It doesn't have a steam account with brawlhalla linked to your discord account. Please either link one to your discord account and try again or use the <insert command here> command to link your brawlhalla account"
-        
-
-
-    await session_pool.close()
 
 register_tortoise(
     app,
