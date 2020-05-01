@@ -2,5 +2,6 @@
 	"client_id": 1234,
 	"redirect_url": "http://localhost:5000/finish_link",
 	"client_secret": "Shhhh!",
-	"db_url": "mysql://username:password@localhost:3306/database"
+	"db_url": "mysql://username:password@localhost:3306/database",
+	"api_key": "key"
 }
